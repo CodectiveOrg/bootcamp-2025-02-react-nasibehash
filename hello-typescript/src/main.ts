@@ -1,17 +1,17 @@
-import reverseArray from './reverse-array';
+import rotateArray from './rotate-array';
 import countNumbers from './count-numbers';
-import sortedArray from './sorted-array';
+import sortArray from './sort-array';
 
-// Reverse Arrays
-console.log('Reverse numbers -->', reverseArray([1, 2, 3, 4, 5, 6, 7]));
-console.log('Reverse strings -->', reverseArray(['hello', 'world', 'typescript']));
-console.log('Reverse objects -->', reverseArray([{id: 1}, {id: 2}, {id: 3}]));
+// Rotate Arrays
+console.log('Rotate numbers -->', rotateArray([1, 2, 3, 4, 5, 6, 7]));
+console.log('Rotate strings -->', rotateArray(['hello', 'world', 'typescript']));
+console.log('Rotate objects -->', rotateArray([{id: 1}, {id: 2}, {id: 3}]));
 
 // Return numbers
-console.log('return numbers', countNumbers([1, 'hello', 3, 4, 5, 'typescript']));
+console.log('Count numbers', countNumbers([1, 'hello', 3, 4, 5, 'typescript']));
 
 // Sort Array
-const arr = [{
+const array = [{
   createdDate: '2025-01-18T09:12:56.849Z',
   modifiedDate: '2025-01-20T05:11:56.849Z'
 }, {
@@ -21,4 +21,4 @@ const arr = [{
   createdDate: '2025-01-08T09:12:56.849Z',
   modifiedDate: '2025-01-31T05:11:56.849Z'
 }];
-console.log('sort by date', sortedArray(arr));
+console.log('sort by date', sortArray(array));
