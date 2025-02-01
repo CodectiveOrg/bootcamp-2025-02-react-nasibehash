@@ -4,16 +4,16 @@ interface DataItem {
 }
 
 export default function sortArray(array: DataItem[]): DataItem[] {
-const newArray = array;
-  for (let i = 0; i < newArray.length - 1; i++) {
-    for (let j = 0; j < newArray.length - i - 1; j++) {
-      const currentItemLatestDate = new Date(newArray[j].modifiedDate || newArray[j].createdDate);
-      const nextItemLatestDate = new Date(newArray[j + 1].modifiedDate || newArray[j + 1].createdDate);
+  const result = [...array];
+  for (let i = 0; i < result.length - 1; i++) {
+    for (let j = 0; j < result.length - i - 1; j++) {
+      const currentItemLatestDate = new Date(result[j].modifiedDate || result[j].createdDate);
+      const nextItemLatestDate = new Date(result[j + 1].modifiedDate || result[j + 1].createdDate);
 
       if (currentItemLatestDate < nextItemLatestDate) {
-        [newArray[j], newArray[j + 1]] = [newArray[j + 1], newArray[j]];
+        [result[j], result[j + 1]] = [result[j + 1], result[j]];
       }
     }
   }
-  return newArray;
+  return result;
 }
