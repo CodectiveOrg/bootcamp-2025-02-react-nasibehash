@@ -1,9 +1,8 @@
 import TextInput from "../TextInput/TextInput.tsx";
 import Select from "../Select/Select.tsx";
+import Button from '../Button/Button.tsx';
 
 import MingcuteSearchLine from "../../icons/MingcuteSearchLine.tsx";
-
-import styles from "./Toolbar.module.css";
 
 export default function Toolbar() {
   return (
@@ -19,7 +18,7 @@ export default function Toolbar() {
           { value: "bad", label: "Bad" },
         ]}
       />
-      <button>.</button>
+      <Button variant="outlined" size="medium" shape="rectangle" ><MingcuteSearchLine /></Button>
     </div>
   );
 }

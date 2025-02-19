@@ -6,10 +6,10 @@ import styles from "./Select.module.css";
 
 import clsx from "clsx";
 
-type props = ComponentProps<"select"> & {
+type Props = ComponentProps<"select"> & {
   options: SelectOption[];
 };
-export default function Select({ options, ...otherProps }: props) {
+export default function Select({ options, ...otherProps }: Props) {
   return (
     <div className={clsx(styles["select"])}>
       <select {...otherProps}>
