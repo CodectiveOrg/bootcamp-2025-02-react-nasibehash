@@ -49,6 +49,6 @@ optgroup {
 body {
   background-color: var(--color-surface);
   color: var(--color-text);
-  inline-size: min(45rem, 100% - 2rem);
+  inline-size: min(40rem, 100% - 2rem);
   margin-inline: auto;
 }
