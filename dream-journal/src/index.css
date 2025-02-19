@@ -1,15 +1,18 @@
 :root {
-  --color-white: #f7f7f7;
-  --color-black: #252525;
-  --color-primary: #6C63FF;
+  --color-white: hsl(0, 0%, 97%);
+  --color-black: hsl(0, 0%, 15%);
+  --color-primary: hsl(243, 100%, 69%);
+  --color-primary-outline: hsl(243, 100%, 69%, 40%);
 
   --color-surface: var(--color-white);
   --color-text: var(--color-black);
 
-&.dark {
-   --color-surface: #252525;
-   --color-text: #f7f7f7;
- }
+&
+.dark {
+  --color-surface: var(--color-black);
+  --color-text: var(--color-white);
+}
+
 }
 
 *,
@@ -21,6 +24,8 @@
 }
 
 html {
+  accent-color: var(--color-primary);
+  caret-color: var(--color-primary);
   font-family: "kanit", system-ui;
 }
 
@@ -38,9 +43,9 @@ optgroup {
   font: inherit;
 }
 
-body{
+body {
   background-color: var(--color-surface);
   color: var(--color-text);
-  inline-size: min(45rem,100% - 2rem);
+  inline-size: min(45rem, 100% - 2rem);
   margin-inline: auto;
 }
