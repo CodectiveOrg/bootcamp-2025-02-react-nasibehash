@@ -15,6 +15,8 @@
   --color-surface: var(--color-white);
   --color-text: var(--color-black);
 
+  --color-border: hsl(243, 100%, 90%);
+
   --shadow: 0 4px 140px 0 hsl(0, 0%, 0%, 33%);
 
   &.dark {
