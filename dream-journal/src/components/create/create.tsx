@@ -3,6 +3,8 @@ import { ReactElement, useRef } from "react";
 import TextInput from "../TextInput/TextInput.tsx";
 import TextArea from "../TextArea/TextArea.tsx";
 import Button from "../Button/Button.tsx";
+import DateInput from "../DateInput/DateInput.tsx";
+import Select from "../Select/Select.tsx";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
 
@@ -29,6 +31,14 @@ export default function Create(): ReactElement {
           <div className={styles.title}>Create a new dream</div>
           <TextInput placeholder="Input your title ..." />
           <TextArea placeholder="Input your description..." />
+          <DateInput />
+          <Select
+            variant="outlined"
+            options={[
+              { value: "good", label: "Good" },
+              { value: "bad", label: "Bad" },
+            ]}
+          />
           <div className={styles.actions}>
             <Button
               type="button"
