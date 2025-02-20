@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./TextInput.module.css";
 
 type Props = ComponentProps<"input"> & {
-  suffixIcon: ReactElement;
+  suffixIcon?: ReactElement;
 };
 export default function TextInput({
   suffixIcon,
@@ -15,7 +15,7 @@ export default function TextInput({
   return (
     <div className={clsx(styles["text-input"], className)}>
       <input type="text" {...otherProps} />
-      <div className={styles.suffix}>{suffixIcon}</div>
+      {suffixIcon && <div className={styles.suffix}>{suffixIcon}</div>}
     </div>
   );
 }
