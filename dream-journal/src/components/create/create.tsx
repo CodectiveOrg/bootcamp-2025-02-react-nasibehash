@@ -14,11 +14,11 @@ export default function Create(): ReactElement {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const addButtonClickHandler = (): void => {
-    dialogRef.current.showModal();
+    dialogRef.current?.showModal();
   };
 
   const cancelButtonClickHandler = (): void => {
-    dialogRef.current.close();
+    dialogRef.current?.close();
   };
 
   return (
