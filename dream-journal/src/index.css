@@ -1,0 +1,64 @@
+:root {
+  --color-white: hsl(0, 0%, 97%);
+  --color-black: hsl(0, 0%, 15%);
+
+  --color-primary: hsl(243, 100%, 69%);
+  --color-primary-fade: hsl(243, 100%, 90%);
+  --color-primary-hover: hsl(243, 67%, 59%);
+  --color-primary-outline: hsl(243, 100%, 69%, 40%);
+
+  --color-danger: hsl(0, 100%, 69%);
+  --color-danger-fade: hsl(0, 100%, 90%);
+  --color-danger-hover: hsl(0, 67%, 59%);
+  --color-danger-outline: hsl(0, 100%, 69%, 40%);
+
+  --color-surface: var(--color-white);
+  --color-text: var(--color-black);
+
+  --color-border: hsl(243, 100%, 90%);
+
+  --color-backdrop: hsl(0, 0%, 0%, 20%);
+
+  --shadow: 0 4px 140px 0 hsl(0, 0%, 0%, 33%);
+
+  &.dark {
+    --color-primary-hover: hsl(244, 49%, 53%);
+    --color-surface: var(--color-black);
+    --color-text: var(--color-white);
+  }
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  accent-color: var(--color-primary);
+  caret-color: var(--color-primary);
+  font-family: "kanit", system-ui;
+}
+
+input,
+select,
+label,
+textarea,
+button,
+fieldset,
+legend,
+datalist,
+output,
+option,
+optgroup {
+  font: inherit;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  inline-size: min(40rem, 100% - 2rem);
+  margin-inline: auto;
+}
