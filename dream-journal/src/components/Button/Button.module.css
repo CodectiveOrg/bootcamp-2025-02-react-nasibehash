@@ -36,6 +36,7 @@
       box-shadow: var(--shadow);
     }
   }
+
   &.outlined {
     background-color: var(--color-surface);
     color: var(--button-color);
