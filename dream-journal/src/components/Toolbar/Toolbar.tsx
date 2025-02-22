@@ -12,7 +12,7 @@ export default function Toolbar() {
     <div className={styles.toolbar}>
       <TextInput
         className={styles.input}
-        placeholder="Search note..."
+        placeholder="Search dream..."
         suffixIcon={<MingcuteSearchLine />}
       />
       <Select

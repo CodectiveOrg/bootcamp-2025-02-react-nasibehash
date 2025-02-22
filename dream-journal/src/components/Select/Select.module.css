@@ -20,6 +20,7 @@
       color: var(--color-primary);
       cursor: pointer;
     }
+
     &:focus{
       outline: none;
      }
