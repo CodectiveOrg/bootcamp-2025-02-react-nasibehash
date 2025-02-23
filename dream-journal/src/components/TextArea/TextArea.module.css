@@ -13,7 +13,7 @@
   resize: vertical;
 
   min-block-size: 2rem;
-  max-block-size:10rem;
+  max-block-size: 10rem;
 
   &:focus {
     outline: 2px solid var(--color-primary-outline);
