@@ -6,6 +6,7 @@ type DreamsContextValue = {
   dreams: Dream[];
   setDreams: Dispatch<SetStateAction<Dream[]>>;
 };
+
 export const DreamsContext = createContext<DreamsContextValue>({
   dreams: [],
   setDreams: () => {},
