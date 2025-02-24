@@ -1,8 +1,8 @@
-.select{
+.select {
   position: relative;
   border-radius: 5px;
 
-  select{
+  select {
     background-color: var(--color-primary);
     color: var(--color-white);
     appearance: none;
@@ -15,28 +15,28 @@
     font-size: 1rem;
     line-height: 1.375;
 
-    option{
+    option {
       background-color: var(--color-white);
       color: var(--color-primary);
       cursor: pointer;
     }
 
-    &:focus{
+    &:focus {
       outline: none;
-     }
+    }
   }
-  &::after{
-    content: '^';
+  &::after {
+    content: "^";
     position: absolute;
     inset-block-start: 50%;
     inset-inline-end: 0.5rem;
     transform: translateY(-50%);
     font-size: 0.75rem;
     pointer-events: none;
- }
+  }
 
- &:focus-within{
-  outline: 2px solid var(--color-primary-outline);
+  &:focus-within {
+    outline: 2px solid var(--color-primary-outline);
   }
 
   &.solid {
@@ -47,8 +47,8 @@
 
     &::after {
       color: var(--color-white);
-     }
-   }
+    }
+  }
 
   &.outlined {
     select {
@@ -59,7 +59,7 @@
     }
 
     &::after {
-       color: var(--color-primary);
-     }
-   }
+      color: var(--color-primary);
+    }
+  }
 }

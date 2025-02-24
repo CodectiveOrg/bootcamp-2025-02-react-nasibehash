@@ -21,8 +21,9 @@
 
   --shadow: 0 4px 140px 0 hsl(0, 0%, 0%, 33%);
 
-  &.dark {
+  &[data-theme="dark"] {
     --color-primary-hover: hsl(244, 49%, 53%);
+
     --color-surface: var(--color-black);
     --color-text: var(--color-white);
   }

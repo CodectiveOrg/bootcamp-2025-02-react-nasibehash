@@ -1,9 +1,9 @@
 .header {
   display: flex;
   justify-content: center;
-    h1 {
-      font-size: 1.625rem;
-      font-weight: 500;
-      margin-block: 2.5rem 1rem;
-    }
+  h1 {
+    font-size: 1.625rem;
+    font-weight: 500;
+    margin-block: 2.5rem 1rem;
+  }
 }

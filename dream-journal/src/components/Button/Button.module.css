@@ -13,16 +13,16 @@
   }
 
   &.primary {
-    --button-color:var(--color-primary);
-    --button-color-hover:var(--color-primary-hover);
-    --button-color-fade:var(--color-primary-fade);
-   }
+    --button-color: var(--color-primary);
+    --button-color-hover: var(--color-primary-hover);
+    --button-color-fade: var(--color-primary-fade);
+  }
 
   &.danger {
-     --button-color:var(--color-danger);
-     --button-color-hover:var(--color-danger-hover);
-     --button-color-fade:var(--color-danger-fade);
-   }
+    --button-color: var(--color-danger);
+    --button-color-hover: var(--color-danger-hover);
+    --button-color-fade: var(--color-danger-fade);
+  }
 
   &.solid {
     background-color: var(--button-color);
@@ -56,11 +56,11 @@
     &:hover,
     &:focus {
       background-color: var(--button-color-fade);
-     }
-   }
+    }
+  }
 
-&.small {
-   block-size: 1.5rem;
+  &.small {
+    block-size: 1.5rem;
 
     svg {
       block-size: 1rem;
