@@ -7,31 +7,11 @@ import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line.tsx";
 
 import styles from "./Result.module.css";
 
-const dreams: Dream[] = [
-  {
-    id: "1",
-    title: "School 1",
-    description: "Lorem",
-    date: new Date(2025, 0, 14),
-    vibe: "good",
-  },
-  {
-    id: "2",
-    title: "School 2",
-    description: "Lorem",
-    date: new Date(2025, 0, 17),
-    vibe: "bad",
-  },
-  {
-    id: "3",
-    title: "School 3",
-    description: "Lorem",
-    date: new Date(2025, 0, 21),
-    vibe: "good",
-  },
-];
+type Props = {
+  dreams: Dream[];
+};
 
-export default function Result() {
+export default function Result({ dreams }: Props) {
   return (
     <ul className={styles.result}>
       {dreams.map((dream) => (
