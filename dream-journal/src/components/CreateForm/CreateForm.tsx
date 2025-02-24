@@ -20,7 +20,7 @@ type Props = {
 export default function CreateForm({ onCancel, onSubmit }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { createDream } = useContext(DreamsContext);
+  const { createDream, editDream, editingDream } = useContext(DreamsContext);
 
   const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -28,14 +28,18 @@ export default function CreateForm({ onCancel, onSubmit }: Props) {
     const formData = new FormData(e.currentTarget);
 
     const dream: Dream = {
-      id: crypto.randomUUID(),
+      id: editingDream?.id ?? crypto.randomUUID(),
       title: formData.get("title") as string,
       description: formData.get("description") as string,
       date: new Date(formData.get("date") as string),
       vibe: formData.get("vibe") as Vibe,
     };
 
-    createDream(dream);
+    if (editingDream) {
+      editDream(dream);
+    } else {
+      createDream(dream);
+    }
 
     onSubmit();
   };
@@ -47,12 +51,21 @@ export default function CreateForm({ onCancel, onSubmit }: Props) {
       onSubmit={formSubmitHandler}
     >
       <div className={styles.title}>Create a new dream</div>
-      <TextInput name="title" placeholder="Input your title ..." />
-      <TextArea name="description" placeholder="Input your description..." />
-      <DateInput name="date" />
+      <TextInput
+        name="title"
+        placeholder="Input your title ..."
+        defaultValue={editingDream?.title}
+      />
+      <TextArea
+        name="description"
+        placeholder="Input your description..."
+        defaultValue={editingDream?.description}
+      />
+      <DateInput name="date" defaultValue={toDateString(editingDream?.date)} />
       <Select
         name="vibe"
         variant="outlined"
+        defaultValue={editingDream?.vibe}
         options={[
           { value: "good", label: "Good" },
           { value: "bad", label: "Bad" },
@@ -66,4 +79,15 @@ export default function CreateForm({ onCancel, onSubmit }: Props) {
       </div>
     </form>
   );
+}
+
+function toDateString(date: Date | undefined): string {
+  if (!date) {
+    return "";
+  }
+  return `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(date.getDate())}`;
+}
+
+function padDate(text: number): string {
+  return text.toString().padStart(2, "0");
 }

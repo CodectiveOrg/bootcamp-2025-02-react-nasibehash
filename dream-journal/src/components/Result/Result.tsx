@@ -10,14 +10,20 @@ import { DreamsContext } from "../../context/dreams-context.ts";
 import styles from "./Result.module.css";
 
 export default function Result() {
-  const { dreams, removeDream } = useContext(DreamsContext);
+  const { dreams, removeDream, setEditingDream } = useContext(DreamsContext);
+
   return (
     <ul className={styles.result}>
       {dreams.map((dream) => (
         <li key={dream.id}>
           <div className={styles.title}> {dream.title}</div>
           <div className={styles.actions}>
-            <Button variant="ghost" size="small" shape="square">
+            <Button
+              variant="ghost"
+              size="small"
+              shape="square"
+              onClick={() => setEditingDream(dream)}
+            >
               <MingcuteEdit2Line />
             </Button>
             <Button

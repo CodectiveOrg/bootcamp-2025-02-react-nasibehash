@@ -17,7 +17,6 @@ export default function ThemeProvider({ children }: Props): ReactNode {
   }, [theme]);
 
   const toggleTheme = (): void => {
-    console.log("sdf");
     setTheme((old) => (old === "light" ? "dark" : "light"));
   };
 
