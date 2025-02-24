@@ -15,8 +15,17 @@ export default function DreamsProvider({ children }: Props): ReactNode {
   useEffect(() => {
     localStorage.setItem(DREAMS_LOCAL_STORAGE_KEY, JSON.stringify(dreams));
   }, [dreams]);
+
+  const createDream = (dream: Dream): void => {
+    setDreams((old) => [...old, dream]);
+  };
+
+  const removeDream = (id: string): void => {
+    setDreams((old) => old.filter((x) => x.id !== id));
+  };
+
   return (
-    <DreamsContext.Provider value={{ dreams, setDreams }}>
+    <DreamsContext.Provider value={{ dreams, createDream, removeDream }}>
       {children}
     </DreamsContext.Provider>
   );

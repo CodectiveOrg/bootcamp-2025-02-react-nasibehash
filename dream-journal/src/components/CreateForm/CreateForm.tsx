@@ -20,7 +20,7 @@ type Props = {
 export default function CreateForm({ onCancel, onSubmit }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { setDreams } = useContext(DreamsContext);
+  const { createDream } = useContext(DreamsContext);
 
   const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -28,14 +28,14 @@ export default function CreateForm({ onCancel, onSubmit }: Props) {
     const formData = new FormData(e.currentTarget);
 
     const dream: Dream = {
-      id: "23",
+      id: crypto.randomUUID(),
       title: formData.get("title") as string,
       description: formData.get("description") as string,
       date: new Date(formData.get("date") as string),
       vibe: formData.get("vibe") as Vibe,
     };
 
-    setDreams((old) => [...old, dream]);
+    createDream(dream);
 
     onSubmit();
   };
