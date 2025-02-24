@@ -1,18 +1,13 @@
-import { Dispatch, ReactElement, SetStateAction, useRef } from "react";
+import { ReactElement, useRef } from "react";
 
 import CreateForm from "../CreateForm/CreateForm.tsx";
 import Button from "../Button/Button.tsx";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
 
-import { Dream } from "../../types/dream.ts";
-
 import styles from "./create.module.css";
 
-type Props = {
-  setDreams: Dispatch<SetStateAction<Dream[]>>;
-};
-export default function Create({ setDreams }: Props): ReactElement {
+export default function Create(): ReactElement {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const addButtonClickHandler = (): void => {
@@ -28,11 +23,7 @@ export default function Create({ setDreams }: Props): ReactElement {
         <MingcuteAddLine />
       </Button>
       <dialog ref={dialogRef}>
-        <CreateForm
-          setDreams={setDreams}
-          onCancel={closeModal}
-          onSubmit={closeModal}
-        />
+        <CreateForm onCancel={closeModal} onSubmit={closeModal} />
       </dialog>
     </div>
   );

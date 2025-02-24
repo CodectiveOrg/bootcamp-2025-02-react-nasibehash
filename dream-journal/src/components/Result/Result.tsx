@@ -1,17 +1,16 @@
-import { Dream } from "../../types/dream.ts";
+import { useContext } from 'react';
 
 import Button from "../Button/Button.tsx";
+
+import { DreamsContext } from '../../App.tsx';
 
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line.tsx";
 import MingcuteDelete2Line from "../../icons/MingcuteDelete2Line.tsx";
 
 import styles from "./Result.module.css";
 
-type Props = {
-  dreams: Dream[];
-};
-
-export default function Result({ dreams }: Props) {
+export default function Result() {
+  const {dreams} = useContext(DreamsContext);
   return (
     <ul className={styles.result}>
       {dreams.map((dream) => (
