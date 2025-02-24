@@ -8,17 +8,20 @@ import Create from "./components/create/create.tsx";
 import DreamsProvider from "./providers/DreamsProvider.tsx";
 
 import "./App.css";
+import ThemeProvider from "./providers/ThemeProvider.tsx";
 
 function App(): ReactNode {
   return (
-    <DreamsProvider>
-      <Header />
-      <main>
-        <Toolbar />
-        <Result />
-      </main>
-      <Create />
-    </DreamsProvider>
+    <ThemeProvider>
+      <DreamsProvider>
+        <Header />
+        <main>
+          <Toolbar />
+          <Result />
+        </main>
+        <Create />
+      </DreamsProvider>
+    </ThemeProvider>
   );
 }
 
