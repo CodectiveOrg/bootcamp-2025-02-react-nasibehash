@@ -1,0 +1,17 @@
+.task-modal {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+
+    inline-size: 100%;
+    max-inline-size: 30rem;
+
+    border: none;
+    margin: auto;
+
+    border-radius: 0.5rem;
+
+    &::backdrop {
+      background-color: var(--color-backdrop);
+      backdrop-filter: blur(5px);
+    }
+}

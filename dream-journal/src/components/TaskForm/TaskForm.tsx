@@ -11,16 +11,17 @@ import { DreamsContext } from "../../context/dreams-context.ts";
 import { Dream } from "../../types/dream.ts";
 import { Vibe } from "../../types/Vibe.ts";
 
-import styles from "./CreateForm.module.css";
+import styles from "./TaskForm.module.css";
 
 type Props = {
+  editingDream?: Dream;
   onCancel: VoidFunction;
   onSubmit: VoidFunction;
 };
-export default function CreateForm({ onCancel, onSubmit }: Props) {
+export default function TaskForm({ editingDream, onCancel, onSubmit }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
 
-  const { createDream, editDream, editingDream } = useContext(DreamsContext);
+  const { createDream, editDream } = useContext(DreamsContext);
 
   const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -50,7 +51,9 @@ export default function CreateForm({ onCancel, onSubmit }: Props) {
       className={styles["create-form"]}
       onSubmit={formSubmitHandler}
     >
-      <div className={styles.title}>Create a new dream</div>
+      <div className={styles.title}>
+        {editingDream ? `Edit ${editingDream.title}` : "Create a new dream"}
+      </div>
       <TextInput
         name="title"
         placeholder="Input your title ..."
@@ -75,7 +78,7 @@ export default function CreateForm({ onCancel, onSubmit }: Props) {
         <Button type="button" variant="outlined" onClick={onCancel}>
           Cancel
         </Button>
-        <Button variant="solid">Apply</Button>
+        <Button variant="solid">{editingDream ? "Edit" : "Create"}</Button>
       </div>
     </form>
   );

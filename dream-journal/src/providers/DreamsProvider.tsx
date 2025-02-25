@@ -2,9 +2,9 @@ import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
 
 import { DreamsContext } from "../context/dreams-context.ts";
 
-import { Dream } from "../types/dream.ts";
-
 import { DREAMS_LOCAL_STORAGE_KEY } from "../constants/local-storage-keys.ts";
+
+import { Dream } from "../types/dream.ts";
 import { Vibe } from "../types/Vibe.ts";
 
 type Props = PropsWithChildren;
@@ -12,8 +12,6 @@ type Props = PropsWithChildren;
 type localStorageDream = Omit<Dream, "date"> & { date: string };
 export default function DreamsProvider({ children }: Props): ReactNode {
   const [dreams, setDreams] = useState<Dream[]>(loadDreamsInitialState);
-
-  const [editingDream, setEditingDream] = useState<Dream | null>(null);
 
   const [selected, setSelected] = useState<Vibe | null>(null);
 
@@ -56,8 +54,6 @@ export default function DreamsProvider({ children }: Props): ReactNode {
         createDream,
         editDream,
         removeDream,
-        editingDream,
-        setEditingDream,
         filteredDreams,
         setFilteredDreams,
         selected,
