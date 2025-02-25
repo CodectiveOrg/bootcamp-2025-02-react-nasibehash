@@ -3,6 +3,7 @@ import { useContext } from "react";
 import TextInput from "../TextInput/TextInput.tsx";
 import Select from "../Select/Select.tsx";
 import Button from "../Button/Button.tsx";
+import LanguageButton from "../LanguageButton/LanguageButton.tsx";
 
 import { ThemeContext } from "../../context/theme-context.ts";
 import { DreamsContext } from "../../context/dreams-context.ts";
@@ -48,6 +49,7 @@ export default function Toolbar() {
       >
         {theme === "light" ? <MingcuteSunLine /> : <MingcuteMoonLine />}
       </Button>
+      <LanguageButton />
     </div>
   );
 }
