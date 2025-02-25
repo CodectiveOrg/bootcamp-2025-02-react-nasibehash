@@ -9,7 +9,6 @@ import { Vibe } from "../types/Vibe.ts";
 
 type Props = PropsWithChildren;
 
-type localStorageDream = Omit<Dream, "date"> & { date: string };
 export default function DreamsProvider({ children }: Props): ReactNode {
   const [dreams, setDreams] = useState<Dream[]>(loadDreamsInitialState);
 
@@ -72,9 +71,5 @@ function loadDreamsInitialState(): Dream[] {
     return [];
   }
 
-  const parsedDreams = JSON.parse(items) as localStorageDream[];
-  return parsedDreams.map((dream) => ({
-    ...dream,
-    date: new Date(dream.date),
-  }));
+  return JSON.parse(items);
 }
