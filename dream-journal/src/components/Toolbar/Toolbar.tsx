@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 
 import TextInput from "../TextInput/TextInput.tsx";
 import Select from "../Select/Select.tsx";
@@ -18,6 +19,7 @@ export default function Toolbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { setSelected, setFilteredDreams } = useContext(DreamsContext);
 
+  const { t } = useTranslation();
   const selectChangeHandler = (e: any) => {
     if (e.target.value == "all") {
       setFilteredDreams(null);
@@ -30,14 +32,14 @@ export default function Toolbar() {
     <div className={styles.toolbar}>
       <TextInput
         className={styles.input}
-        placeholder="Search dream..."
+        placeholder={t("toolbar.search.placeholder")}
         suffixIcon={<MingcuteSearchLine />}
       />
       <Select
         options={[
-          { value: "all", label: "All" },
-          { value: "good", label: "Good" },
-          { value: "bad", label: "Bad" },
+          { value: "all", label: t("dreams.form.vibe.all") },
+          { value: "good", label: t("dreams.form.vibe.good") },
+          { value: "bad", label: t("dreams.form.vibe.bad") },
         ]}
         onChange={selectChangeHandler}
       />

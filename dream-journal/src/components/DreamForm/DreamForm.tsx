@@ -1,4 +1,5 @@
 import { FormEvent, useContext, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import TextInput from "../TextInput/TextInput.tsx";
 import TextArea from "../TextArea/TextArea.tsx";
@@ -27,6 +28,8 @@ export default function DreamForm({ editingDream, onCancel, onSubmit }: Props) {
   const [dream, setDream] = useState(generateEmptyDream);
 
   const { createDream, editDream } = useContext(DreamsContext);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     setDream(editingDream ? { ...editingDream } : generateEmptyDream());
@@ -78,17 +81,19 @@ export default function DreamForm({ editingDream, onCancel, onSubmit }: Props) {
       onSubmit={formSubmitHandler}
     >
       <div className={styles.title}>
-        {editingDream ? `Edit ${editingDream.title}` : "Create a new dream"}
+        {editingDream
+          ? t("dreams.create.edit", { title: editingDream.title })
+          : t("dreams.create.title")}
       </div>
       <TextInput
         name="title"
-        placeholder="Input your title ..."
+        placeholder={t("dreams.form.title.placeholder")}
         value={dream?.title}
         onChange={(e) => setDream((old) => ({ ...old, title: e.target.value }))}
       />
       <TextArea
         name="description"
-        placeholder="Input your description..."
+        placeholder={t("dreams.form.description.placeholder")}
         value={dream?.description}
         onChange={(e) =>
           setDream((old) => ({ ...old, description: e.target.value }))
@@ -117,9 +122,14 @@ export default function DreamForm({ editingDream, onCancel, onSubmit }: Props) {
           variant="outlined"
           onClick={cancelButtonClickHandler}
         >
-          Cancel
+          {t("dreams.actions.cancel")}
         </Button>
-        <Button variant="solid">{editingDream ? "Edit" : "Create"}</Button>
+        <Button variant="solid">
+          {" "}
+          {editingDream
+            ? t("dreams.actions.confirm")
+            : t("dreams.actions.create")}
+        </Button>
       </div>
     </form>
   );
