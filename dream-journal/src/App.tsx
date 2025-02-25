@@ -16,8 +16,8 @@ function App(): ReactNode {
       <DreamsProvider>
         <Header />
         <main>
-          <Toolbar />
-          <Result />
+            <Toolbar />
+            <Result />
         </main>
         <Create />
       </DreamsProvider>

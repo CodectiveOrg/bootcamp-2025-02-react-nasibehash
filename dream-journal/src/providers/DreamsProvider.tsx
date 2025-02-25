@@ -5,13 +5,30 @@ import { DreamsContext } from "../context/dreams-context.ts";
 import { Dream } from "../types/dream.ts";
 
 import { DREAMS_LOCAL_STORAGE_KEY } from "../constants/local-storage-keys.ts";
+import { Vibe } from "../types/Vibe.ts";
 
 type Props = PropsWithChildren;
 
 type localStorageDream = Omit<Dream, "date"> & { date: string };
 export default function DreamsProvider({ children }: Props): ReactNode {
   const [dreams, setDreams] = useState<Dream[]>(loadDreamsInitialState);
+
   const [editingDream, setEditingDream] = useState<Dream | null>(null);
+
+  const [selected, setSelected] = useState<Vibe | null>(null);
+
+  const [filteredDreams, setFilteredDreams] = useState<Dream[] | null>(
+    loadDreamsInitialState,
+  );
+
+  useEffect(() => {
+    if (selected) {
+      const filtered = dreams.filter((dream) => dream.vibe === selected);
+      setFilteredDreams(filtered);
+    } else {
+      setFilteredDreams(loadDreamsInitialState);
+    }
+  }, [selected]);
 
   useEffect(() => {
     localStorage.setItem(DREAMS_LOCAL_STORAGE_KEY, JSON.stringify(dreams));
@@ -19,14 +36,17 @@ export default function DreamsProvider({ children }: Props): ReactNode {
 
   const createDream = (dream: Dream): void => {
     setDreams((old) => [...old, dream]);
+    setFilteredDreams(null);
   };
 
   const editDream = (dream: Dream): void => {
     setDreams((old) => old.map((x) => (x.id === dream.id ? { ...dream } : x)));
+    setFilteredDreams(null);
   };
 
   const removeDream = (id: string): void => {
     setDreams((old) => old.filter((x) => x.id !== id));
+    setFilteredDreams(null);
   };
 
   return (
@@ -38,6 +58,10 @@ export default function DreamsProvider({ children }: Props): ReactNode {
         removeDream,
         editingDream,
         setEditingDream,
+        filteredDreams,
+        setFilteredDreams,
+        selected,
+        setSelected,
       }}
     >
       {children}
