@@ -1,6 +1,6 @@
 import { ReactElement, useRef } from "react";
 
-import TaskModal from "../TaskModal/TaskModal.tsx";
+import DreamModal from "../DreamModal/DreamModal.tsx";
 import Button from "../Button/Button.tsx";
 
 import MingcuteAddLine from "../../icons/MingcuteAddLine.tsx";
@@ -19,7 +19,7 @@ export default function Create(): ReactElement {
       <Button shape="circle" size="large" onClick={addButtonClickHandler}>
         <MingcuteAddLine />
       </Button>
-      <TaskModal ref={modalRef} />
+      <DreamModal ref={modalRef} />
     </div>
   );
 }

@@ -11,14 +11,14 @@ import { DreamsContext } from "../../context/dreams-context.ts";
 import { Dream } from "../../types/dream.ts";
 import { Vibe } from "../../types/Vibe.ts";
 
-import styles from "./TaskForm.module.css";
+import styles from "./DreamForm.module.css";
 
 type Props = {
   editingDream?: Dream;
   onCancel: VoidFunction;
   onSubmit: VoidFunction;
 };
-export default function TaskForm({ editingDream, onCancel, onSubmit }: Props) {
+export default function DreamForm({ editingDream, onCancel, onSubmit }: Props) {
   const formRef = useRef<HTMLFormElement>(null);
 
   const [dream, setDream] = useState(generateEmptyDream);

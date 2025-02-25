@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react";
 
-import TaskModal from "../TaskModal/TaskModal.tsx";
+import DreamModal from "../DreamModal/DreamModal.tsx";
 import Button from "../Button/Button.tsx";
 
 import MingcuteEdit2Line from "../../icons/MingcuteEdit2Line.tsx";
@@ -75,7 +75,7 @@ export default function Result() {
               </li>
             ))}
       </ul>
-      <TaskModal ref={modalRef} editingDream={editingDream ?? undefined} />
+      <DreamModal ref={modalRef} editingDream={editingDream ?? undefined} />
     </>
   );
 }
