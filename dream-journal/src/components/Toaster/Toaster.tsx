@@ -1,8 +1,11 @@
 import { ReactElement, useContext } from "react";
-import { Bounce, ToastContainer } from "react-toastify";
+import { Bounce, ToastContainer, ToastContainerProps } from "react-toastify";
+
 import { ThemeContext } from "../../context/theme-context.ts";
 
-export default function Toaster(): ReactElement {
+type Props = Partial<ToastContainerProps>;
+
+export default function Toaster(props: Props): ReactElement {
   const { theme } = useContext(ThemeContext);
   return (
     <ToastContainer
@@ -17,6 +20,7 @@ export default function Toaster(): ReactElement {
       pauseOnHover
       theme={theme}
       transition={Bounce}
+      {...props}
     />
   );
 }

@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --color-white: hsl(0, 0%, 97%);
   --color-black: hsl(0, 0%, 15%);
 
@@ -22,6 +23,8 @@
   --shadow: 0 4px 140px 0 hsl(0, 0%, 0%, 33%);
 
   &[data-theme="dark"] {
+    color-scheme: dark;
+
     --color-primary-hover: hsl(244, 49%, 53%);
 
     --color-surface: var(--color-black);

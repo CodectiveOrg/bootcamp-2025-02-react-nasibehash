@@ -5,8 +5,11 @@ import TextArea from "../TextArea/TextArea.tsx";
 import DateInput from "../DateInput/DateInput.tsx";
 import Select from "../Select/Select.tsx";
 import Button from "../Button/Button.tsx";
+import { toast } from "react-toastify";
 
 import { DreamsContext } from "../../context/dreams-context.ts";
+
+import { MODAL_CONTAINER_ID } from "../../constants/id.ts";
 
 import { Dream } from "../../types/dream.ts";
 import { Vibe } from "../../types/Vibe.ts";
@@ -31,6 +34,28 @@ export default function DreamForm({ editingDream, onCancel, onSubmit }: Props) {
 
   const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+
+    if (!dream.title) {
+      toast.error("Title is required.", { containerId: MODAL_CONTAINER_ID });
+      return;
+    }
+
+    if (!dream.description) {
+      toast.error("Description is required.", {
+        containerId: MODAL_CONTAINER_ID,
+      });
+      return;
+    }
+
+    if (!dream.date) {
+      toast.error("Date is required.", { containerId: MODAL_CONTAINER_ID });
+      return;
+    }
+
+    if (!dream.vibe) {
+      toast.error("Vibe is required.", { containerId: MODAL_CONTAINER_ID });
+      return;
+    }
 
     if (editingDream) {
       editDream(dream);

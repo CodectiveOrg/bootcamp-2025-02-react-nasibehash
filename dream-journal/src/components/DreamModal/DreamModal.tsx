@@ -6,7 +6,10 @@ import {
   useRef,
 } from "react";
 
+import Toaster from "../Toaster/Toaster.tsx";
 import DreamForm from "../DreamForm/DreamForm.tsx";
+
+import { MODAL_CONTAINER_ID } from "../../constants/id.ts";
 
 import { Dream } from "../../types/dream.ts";
 
@@ -50,6 +53,7 @@ const DreamModal = forwardRef<modalRef, Props>(function DreamModal(
         onCancel={closeModal}
         onSubmit={closeModal}
       />
+      <Toaster containerId={MODAL_CONTAINER_ID} />
     </dialog>
   );
 });

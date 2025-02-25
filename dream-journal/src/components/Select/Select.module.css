@@ -16,7 +16,7 @@
     line-height: 1.375;
 
     option {
-      background-color: var(--color-white);
+      background-color: var(--color-surface);
       color: var(--color-primary);
       cursor: pointer;
     }
