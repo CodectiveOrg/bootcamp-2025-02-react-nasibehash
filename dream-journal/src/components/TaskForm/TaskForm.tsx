@@ -39,6 +39,7 @@ export default function TaskForm({ editingDream, onCancel, onSubmit }: Props) {
     }
 
     onSubmit();
+    setDream(generateEmptyDream);
   };
 
   const cancelButtonClickHandler = () => {
