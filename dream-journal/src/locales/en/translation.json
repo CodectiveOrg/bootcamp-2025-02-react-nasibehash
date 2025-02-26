@@ -1,0 +1,56 @@
+{
+  "app": {
+    "title": "Dream Journal"
+  },
+  "languages": {
+    "english": "English",
+    "farsi": "فارسی"
+  },
+  "dreams": {
+    "create": {
+      "title": "Create a New Dream",
+      "edit": "Edit {{title}}"
+    },
+    "form": {
+      "title": {
+        "placeholder": "Input your title..."
+      },
+      "description": {
+        "placeholder": "Input your description..."
+      },
+      "vibe": {
+        "all": "All",
+        "good": "😃 Good",
+        "bad": "😭 Bad"
+      }
+    },
+    "actions": {
+      "create": "Create",
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+    }
+  },
+  "counter": {
+    "label": "Count: {{count}}"
+  },
+  "validation": {
+    "required": "This field is required",
+    "date": {
+      "required": "Date is required",
+      "invalid": "Invalid date format"
+    },
+    "title": {
+      "required": "Title is required",
+      "length": "Title must be between {{minTitleLength}} and {{maxTitleLength}} characters"
+    },
+    "description": {
+      "required": "Description is required",
+      "length": "Description must be less than {{maxDescriptionLength}} characters"
+    }
+  },
+  "toolbar": {
+    "search": {
+      "placeholder": "Search dreams..."
+    }
+  }
+}

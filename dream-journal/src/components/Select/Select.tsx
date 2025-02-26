@@ -1,4 +1,4 @@
-import { ComponentProps, ReactElement } from "react";
+import { ComponentProps, forwardRef, ReactElement } from "react";
 
 import { SelectOption } from "../../types/select-option.ts";
 
@@ -12,15 +12,13 @@ type Props = ComponentProps<"select"> & {
   variant?: Variant;
   options: SelectOption[];
 };
-
-export default function Select({
-  variant = "solid",
-  options,
-  ...otherProps
-}: Props): ReactElement {
+const Select = forwardRef<HTMLSelectElement, Props>(function Select(
+  { variant = "solid", options, ...otherProps },
+  ref,
+): ReactElement {
   return (
     <div className={clsx(styles["select"], styles[variant])}>
-      <select {...otherProps}>
+      <select ref={ref} {...otherProps}>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}
@@ -29,4 +27,5 @@ export default function Select({
       </select>
     </div>
   );
-}
+});
+export default Select;
