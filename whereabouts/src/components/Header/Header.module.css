@@ -4,17 +4,17 @@
   align-items: baseline;
   gap: 1rem;
 
-  padding-block: 1rem;
+  padding-block: 2rem;
 
   .logo {
-    font-size: var(--fz-500);
+    font-size: var(--fz-600);
     font-weight: 700;
   }
 
   nav {
     > ul {
       display: flex;
-      gap: 1rem;
+      gap: 2rem;
 
       > li {
         a {
@@ -24,6 +24,8 @@
 
           &.active {
             color: var(--color-primary);
+
+            font-weight: 700;
           }
         }
       }
