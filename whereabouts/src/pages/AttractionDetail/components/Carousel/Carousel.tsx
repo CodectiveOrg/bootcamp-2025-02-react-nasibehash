@@ -29,7 +29,7 @@ function Carousel({ attraction }: Props): ReactElement {
         {attraction.carousel.map((image) => (
           <li key={image}>
             <img
-              src={`${import.meta.env.VITE_CDN_BASE_URL}/${image}`}
+              src={`https://images.kojaro.com/${image}`}
               alt=""
               height={480}
             />

@@ -17,7 +17,7 @@ export default function AttractionDetail(): ReactElement {
   useEffect(() => {
     const fetchAttraction = async (): Promise<void> => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/attraction/${id}`,
+        `https://api.codective.ir/whereabouts/attraction/${id}`,
       );
       const data = await response.json();
 
