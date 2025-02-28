@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { Link, NavLink } from "react-router";
+
 import clsx from "clsx";
 
 import styles from "./Header.module.css";
@@ -14,7 +15,7 @@ const navItems: NavItem[] = [
   { title: "درباره ما", href: "/about" },
   { title: "تماس با ما", href: "/contact" },
 ];
-export default function (): ReactElement {
+export default function Header(): ReactElement {
   return (
     <div className={styles.header}>
       <Link to="/" className="logo">

@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 
 import styles from "./Footer.module.css";
 
-export default function (): ReactElement {
+export default function Footer(): ReactElement {
   const year = new Date().getFullYear();
 
   return (
