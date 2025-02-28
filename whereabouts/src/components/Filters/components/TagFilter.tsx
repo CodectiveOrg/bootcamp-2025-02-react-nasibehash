@@ -11,7 +11,6 @@ export default function TagFilter(): ReactElement {
   return (
     <div className={styles["tag-filter"]}>
       <div className={styles.title}>برچسب</div>
-      {filters.tags.length}
       <div className={styles.options}>
         {tags.map((tag) => (
           <label key={tag.id}>
