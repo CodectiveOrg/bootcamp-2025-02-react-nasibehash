@@ -1,0 +1,23 @@
+.attraction-detail-body {
+  *,
+  *::before,
+  *::after {
+    margin: revert;
+    padding: revert;
+  }
+
+  ul {
+    list-style: unset;
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  img {
+    block-size: auto;
+    inline-size: 100%;
+
+    border-radius: var(--border-radius-400);
+  }
+}

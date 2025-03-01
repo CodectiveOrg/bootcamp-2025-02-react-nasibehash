@@ -1,0 +1,45 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+
+  > ul {
+    display: flex;
+
+    transition: transform 0.5s ease-in-out;
+
+    > li {
+      flex: 0 0 100%;
+
+      img {
+        block-size: auto;
+        inline-size: 100%;
+
+        border-radius: var(--border-radius-400);
+      }
+    }
+  }
+
+  .bullets {
+    position: absolute;
+    inset-block-end: 1rem;
+    inset-inline: 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+
+    .bullet {
+      background-color: var(--color-surface-400);
+
+      block-size: 1rem;
+      inline-size: 1rem;
+
+      border: 2px solid var(--color-primary);
+      border-radius: 999rem;
+
+      &.active {
+        background-color: var(--color-primary);
+      }
+    }
+  }
+}
