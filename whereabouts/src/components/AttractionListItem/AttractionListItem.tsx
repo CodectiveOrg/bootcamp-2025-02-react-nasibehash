@@ -18,7 +18,7 @@ export default function AttractionListItem({
       <div className={styles.visuals}>
         <img
           className={styles.thumbnail}
-          src={`https://images.kojaro.com/${attraction.thumbnail}`}
+          src={`${import.meta.env.VITE_CDN_BASE_URL}/${attraction.thumbnail}`}
           alt=""
         />
       </div>

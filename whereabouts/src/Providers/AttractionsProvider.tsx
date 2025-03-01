@@ -26,7 +26,7 @@ function AttractionsProvider({ children }: Props): ReactElement {
       filters.tags.forEach((tag) => params.append("tag", tag.id.toString()));
 
       const response = await fetch(
-        `https://api.codective.ir/whereabouts/attraction?${params.toString()}`,
+        `${import.meta.env.VITE_API_BASE_URL}/attraction?${params.toString()}`,
       );
       const data = await response.json();
 
