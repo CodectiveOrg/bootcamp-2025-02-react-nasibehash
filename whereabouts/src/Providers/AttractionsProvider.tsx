@@ -1,43 +1,28 @@
-import {
-  PropsWithChildren,
-  ReactElement,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { PropsWithChildren, ReactElement, useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import { FiltersContext } from "../context/FiltersContext.tsx";
 import { AttractionsContext } from "../context/AttractionsContext.tsx";
 
-import { Attraction } from "../types/attraction.ts";
+import { fetchAttractions } from "../api/fetch-attractions.ts";
 
 type Props = PropsWithChildren;
 
 function AttractionsProvider({ children }: Props): ReactElement {
   const { filters } = useContext(FiltersContext);
 
-  const [filteredAttractions, setFilteredAttractions] = useState<Attraction[]>(
-    [],
-  );
+  const { data: attractions, isFetching } = useQuery({
+    queryKey: ["attractions", filters],
+    queryFn: () => fetchAttractions(filters),
+    initialData: [],
+  });
 
-  useEffect(() => {
-    const fetchAttractions = async (): Promise<void> => {
-      const params = new URLSearchParams();
-      filters.tags.forEach((tag) => params.append("tag", tag.id.toString()));
-
-      const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/attraction?${params.toString()}`,
-      );
-      const data = await response.json();
-
-      setFilteredAttractions(data);
-    };
-
-    fetchAttractions().then();
-  }, [filters]);
+  if (isFetching) {
+    return <>"در حال بارگذاری ..."</>;
+  }
 
   return (
-    <AttractionsContext.Provider value={{ filteredAttractions }}>
+    <AttractionsContext.Provider value={{ filteredAttractions: attractions }}>
       {children}
     </AttractionsContext.Provider>
   );
