@@ -7,9 +7,11 @@ import About from "./pages/About/About.tsx";
 import Home from "./pages/Home/Home.tsx";
 
 import "./App.css";
+import { QueryProvider } from './Providers/QueryProvider.tsx';
 
 function App() {
   return (
+    <QueryProvider>
     <Routes>
       <Route element={<RootLayout />}>
         <Route index element={<Home />} />
@@ -18,6 +20,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
+    </QueryProvider>
   );
 }
 
