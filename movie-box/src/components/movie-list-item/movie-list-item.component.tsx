@@ -1,8 +1,11 @@
-import { ReactElement } from "react";
+import { ReactElement, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 import { Link } from "react-router";
 
 import clsx from "clsx";
+
+import { fetchGenresApi } from "../../api/fetch-genres.api.ts";
 
 import FluentEmojiStar from "../../icons/FluentEmojiStar.tsx";
 
@@ -15,6 +18,18 @@ type Props = {
 };
 
 function MovieListItemComponent({ movie }: Props): ReactElement {
+  const { data: allGenres } = useQuery({
+    queryKey: ["genres"],
+    queryFn: fetchGenresApi,
+  });
+
+  const movieGenres = useMemo(() => {
+    if (!allGenres) {
+      return [];
+    }
+    return allGenres?.filter((x) => movie.genre_ids.includes(x.id));
+  }, [allGenres, movie.genre_ids]);
+
   return (
     <li className={styles["movie-list-item"]}>
       <div className={styles.visuals}>
@@ -38,8 +53,8 @@ function MovieListItemComponent({ movie }: Props): ReactElement {
         </div>
         <div className={styles.overview}>{movie.overview}</div>
         <ul className={styles.genres}>
-          {movie.genre_ids.map((genre) => (
-            <li key={genre}>{genre}</li>
+          {movieGenres.map((genre) => (
+            <li key={genre.id}>{genre.name}</li>
           ))}
         </ul>
       </div>

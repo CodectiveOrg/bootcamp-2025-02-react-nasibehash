@@ -3,7 +3,6 @@ import { ReactElement, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchMoviesApi } from "../../api/fetch-movies.api.ts";
-
 import { FiltersContext } from "../../context/filters.context.ts";
 
 import MovieListItemComponent from "../movie-list-item/movie-list-item.component.tsx";
@@ -18,7 +17,6 @@ function MovieListComponent(): ReactElement {
     queryKey: ["movies", filters],
     queryFn: () => fetchMoviesApi(filters),
     staleTime: 60 * 1000,
-    placeholderData: [],
   });
 
   if (isLoading) {
