@@ -1,11 +1,10 @@
 import { ReactElement, useMemo } from "react";
-import { useQuery } from "@tanstack/react-query";
 
 import { Link } from "react-router";
 
 import clsx from "clsx";
 
-import { fetchGenresApi } from "../../api/fetch-genres.api.ts";
+import useGenresQuery from "../../queries/use-genres.query.ts";
 
 import FluentEmojiStar from "../../icons/FluentEmojiStar.tsx";
 
@@ -18,10 +17,7 @@ type Props = {
 };
 
 function MovieListItemComponent({ movie }: Props): ReactElement {
-  const { data: allGenres } = useQuery({
-    queryKey: ["genres"],
-    queryFn: fetchGenresApi,
-  });
+  const { data: allGenres } = useGenresQuery();
 
   const movieGenres = useMemo(() => {
     if (!allGenres) {
