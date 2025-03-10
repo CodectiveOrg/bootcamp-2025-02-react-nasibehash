@@ -9,9 +9,11 @@ type DreamsContextValue = {
   editDream: (dream: Dream) => void;
   removeDream: (id: string) => void;
   filteredDreams: Dream[] | null;
-  setFilteredDreams: Dispatch<SetStateAction<Dream[] | null>>;
+  setFilteredDreams: Dispatch<SetStateAction<Dream[]>>;
   selected: Vibe | null;
   setSelected: Dispatch<SetStateAction<Vibe | null>>;
+  search: string;
+  setSearch: Dispatch<SetStateAction<string>>;
 };
 
 export const DreamsContext = createContext<DreamsContextValue>({
@@ -23,4 +25,6 @@ export const DreamsContext = createContext<DreamsContextValue>({
   setFilteredDreams: () => {},
   selected: null,
   setSelected: () => {},
+  search: "",
+  setSearch: () => {},
 });

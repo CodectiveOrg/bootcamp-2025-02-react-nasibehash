@@ -13,7 +13,7 @@ import { Dream } from "../../types/dream.ts";
 import styles from "./Result.module.css";
 
 export default function Result() {
-  const { dreams, removeDream, filteredDreams } = useContext(DreamsContext);
+  const { removeDream, filteredDreams } = useContext(DreamsContext);
   const [editingDream, setEditingDream] = useState<Dream | null>(null);
 
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -25,55 +25,30 @@ export default function Result() {
   return (
     <>
       <ul className={styles.result}>
-        {filteredDreams
-          ? filteredDreams.map((dream) => (
-              <li key={dream.id}>
-                <div className={styles.title}> {dream.title}</div>
-                <div className={styles.actions}>
-                  <Button
-                    variant="ghost"
-                    size="small"
-                    shape="square"
-                    onClick={() => editButtonClickHandler(dream)}
-                  >
-                    <MingcuteEdit2Line />
-                  </Button>
-                  <Button
-                    color="danger"
-                    variant="ghost"
-                    size="small"
-                    shape="square"
-                    onClick={() => removeDream(dream.id)}
-                  >
-                    <MingcuteDelete2Line />
-                  </Button>
-                </div>
-              </li>
-            ))
-          : dreams.map((dream) => (
-              <li key={dream.id}>
-                <div className={styles.title}> {dream.title}</div>
-                <div className={styles.actions}>
-                  <Button
-                    variant="ghost"
-                    size="small"
-                    shape="square"
-                    onClick={() => editButtonClickHandler(dream)}
-                  >
-                    <MingcuteEdit2Line />
-                  </Button>
-                  <Button
-                    color="danger"
-                    variant="ghost"
-                    size="small"
-                    shape="square"
-                    onClick={() => removeDream(dream.id)}
-                  >
-                    <MingcuteDelete2Line />
-                  </Button>
-                </div>
-              </li>
-            ))}
+        {filteredDreams?.map((dream) => (
+          <li key={dream.id}>
+            <div className={styles.title}> {dream.title}</div>
+            <div className={styles.actions}>
+              <Button
+                variant="ghost"
+                size="small"
+                shape="square"
+                onClick={() => editButtonClickHandler(dream)}
+              >
+                <MingcuteEdit2Line />
+              </Button>
+              <Button
+                color="danger"
+                variant="ghost"
+                size="small"
+                shape="square"
+                onClick={() => removeDream(dream.id)}
+              >
+                <MingcuteDelete2Line />
+              </Button>
+            </div>
+          </li>
+        ))}
       </ul>
       <DreamModal ref={modalRef} editingDream={editingDream ?? undefined} />
     </>

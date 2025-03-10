@@ -17,15 +17,15 @@ import styles from "./Toolbar.module.css";
 
 export default function Toolbar() {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const { setSelected, setFilteredDreams } = useContext(DreamsContext);
+  const { setSelected, search, setSearch } = useContext(DreamsContext);
 
   const { t } = useTranslation();
   const selectChangeHandler = (e: any) => {
-    if (e.target.value == "all") {
-      setFilteredDreams(null);
-    } else {
-      setSelected(e.target.value);
-    }
+    setSelected(e.target.value);
+  };
+
+  const serachChangeHandler = (e: any) => {
+    setSearch(e.target.value);
   };
 
   return (
@@ -34,6 +34,8 @@ export default function Toolbar() {
         className={styles.input}
         placeholder={t("toolbar.search.placeholder")}
         suffixIcon={<MingcuteSearchLine />}
+        value={search}
+        onChange={(e) => serachChangeHandler(e)}
       />
       <Select
         options={[

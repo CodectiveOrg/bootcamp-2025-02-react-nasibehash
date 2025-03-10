@@ -1,1 +1,1 @@
-export type Vibe = "good" | "bad";
+export type Vibe = "good" | "bad" | "all";
