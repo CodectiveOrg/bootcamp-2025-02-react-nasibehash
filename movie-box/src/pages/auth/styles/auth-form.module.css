@@ -1,4 +1,4 @@
-.sign-up-form {
+.auth-form {
   background-color: var(--color-surface-300);
   box-shadow: var(--shadow);
 
@@ -13,12 +13,13 @@
     display: grid;
     gap: 1rem;
 
-    margin-block-end: 1rem;
+    margin-block: 1rem;
   }
 
   .change-form {
     a {
       color: var(--color-primary);
+
       text-decoration: underline;
     }
   }

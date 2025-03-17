@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 
-import SignUpFormComponent from "../components/sign-up-form.component.tsx";
+import SignUpFormComponent from "../components/sign-up-form/sign-up-form.component.tsx";
 
 import styles from "./sign-up-page.module.css";
 

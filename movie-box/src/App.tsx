@@ -11,6 +11,8 @@ import Toaster from "./components/toaster/toaster.tsx";
 import QueryProvider from "./providers/query.provider.tsx";
 
 import "./App.css";
+import DashboardPage from "./pages/dashboard/dashboard.page.tsx";
+import SignInPage from "./pages/auth/sign-in/sign-in.page.tsx";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="movie/:id" element={<MoviePage />} />
           <Route path="auth/sign-up" element={<SignUpPage />} />
+          <Route path="auth/sign-in" element={<SignInPage />} />
+          <Route path="dashboard" element={<DashboardPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

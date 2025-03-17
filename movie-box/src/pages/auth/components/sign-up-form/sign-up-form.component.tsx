@@ -3,16 +3,16 @@ import { Link, useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 
-import FormTextInputComponent from "../../../components/form-text-input/form-text-input.component.tsx";
-import PasswordInputComponent from "../../../components/password-input/password-input.component.tsx";
-import ButtonComponent from "../../../components/button/button.component.tsx";
+import FormTextInputComponent from "../../../../components/form-text-input/form-text-input.component.tsx";
+import PasswordInputComponent from "../../../../components/password-input/password-input.component.tsx";
+import ButtonComponent from "../../../../components/button/button.component.tsx";
 
-import { ValidationErrors } from "../../../dto/response.dto.ts";
-import { SignUpDto } from "../../../dto/sign-up.dto.ts";
+import { ValidationErrors } from "../../../../dto/response.dto.ts";
+import { SignUpDto } from "../../../../dto/sign-up.dto.ts";
 
-import { fetchSignUpApi } from "../../../api/fetch-sign-up.api.ts";
+import { fetchSignUpApi } from "../../../../api/fetch-sign-up.api.ts";
 
-import styles from "./sign-up-form.module.css";
+import styles from "../../styles/auth-form.module.css";
 
 export default function SignUpFormComponent(): ReactElement {
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ export default function SignUpFormComponent(): ReactElement {
   };
 
   return (
-    <div className={styles["sign-up-form"]}>
+    <div className={styles["auth-form"]}>
       <h1>Sign Up!</h1>
       <form onSubmit={formSubmitHandler}>
         <FormTextInputComponent
