@@ -13,6 +13,8 @@ import QueryProvider from "./providers/query.provider.tsx";
 import "./App.css";
 import DashboardPage from "./pages/dashboard/dashboard.page.tsx";
 import SignInPage from "./pages/auth/sign-in/sign-in.page.tsx";
+import UserOnlyGuard from "./guards/user-only.guard.tsx";
+import GuestOnlyGuard from "./guards/guest-only.guard.tsx";
 
 function App() {
   return (
@@ -21,9 +23,13 @@ function App() {
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
           <Route path="movie/:id" element={<MoviePage />} />
-          <Route path="auth/sign-up" element={<SignUpPage />} />
-          <Route path="auth/sign-in" element={<SignInPage />} />
-          <Route path="dashboard" element={<DashboardPage />} />
+          <Route element={<GuestOnlyGuard />}>
+            <Route path="auth/sign-up" element={<SignUpPage />} />
+            <Route path="auth/sign-in" element={<SignInPage />} />
+          </Route>
+          <Route element={<UserOnlyGuard />}>
+            <Route path="dashboard" element={<DashboardPage />} />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
