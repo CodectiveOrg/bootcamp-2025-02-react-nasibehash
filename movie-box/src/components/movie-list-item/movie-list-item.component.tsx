@@ -1,12 +1,13 @@
-import { ReactElement, useMemo } from "react";
+import { ReactElement, useMemo, useState } from "react";
 
 import { Link } from "react-router";
 
 import clsx from "clsx";
 
-import useGenresQuery from "../../queries/use-genres.query.ts";
-
 import FluentEmojiStar from "../../icons/FluentEmojiStar.tsx";
+
+import useConfigurationQuery from "../../queries/use-configuration.query.ts";
+import useGenresQuery from "../../queries/use-genres.query.ts";
 
 import { MovieListItemType } from "../../types/movie-list-item.type.ts";
 
@@ -17,19 +18,30 @@ type Props = {
 };
 
 function MovieListItemComponent({ movie }: Props): ReactElement {
+  const { data: configuration } = useConfigurationQuery();
   const { data: allGenres } = useGenresQuery();
+
+  const [isImageBroken, setIsImageBroken] = useState<boolean>(false);
 
   const movieGenres = useMemo(() => {
     if (!allGenres) {
       return [];
     }
-    return allGenres?.filter((x) => movie.genre_ids.includes(x.id));
+
+    return allGenres.filter((x) => movie.genre_ids.includes(x.id));
   }, [allGenres, movie.genre_ids]);
 
   return (
     <li className={styles["movie-list-item"]}>
       <div className={styles.visuals}>
-        <img className={clsx(styles.poster)} src={""} alt="" />
+        {configuration && movie.poster_path && (
+          <img
+            className={clsx(styles.poster, isImageBroken && styles.broken)}
+            src={`${configuration?.images.base_url}${configuration?.images.poster_sizes[0]}${movie.poster_path}`}
+            alt=""
+            onError={() => setIsImageBroken(true)}
+          />
+        )}
       </div>
       <div className={styles.writings}>
         <Link

@@ -1,16 +1,22 @@
+import { GenreType } from "./genre.type.ts";
+
 export type MovieType = {
-  adult: boolean;
   backdrop_path: string;
-  genre_ids: number[];
+  budget: number;
+  genres: GenreType[];
+  homepage: string;
   id: number;
+  imdb_id: string;
+  origin_country: string[];
   original_language: string;
   original_title: string;
   overview: string;
-  popularity: number;
   poster_path: string;
   release_date: string;
+  revenue: number;
+  status: string;
+  tagline: string;
   title: string;
-  video: boolean;
   vote_average: number;
   vote_count: number;
 };

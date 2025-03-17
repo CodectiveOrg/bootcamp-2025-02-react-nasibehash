@@ -6,6 +6,8 @@ import { useParams } from "react-router";
 
 import { fetchMovieApi } from "../../api/fetch-movie.api.ts";
 
+import MovieDetailsComponent from "./components/movie-details/movie-details.component.tsx";
+
 import styles from "./movie.module.css";
 
 function MoviePage(): ReactElement {
@@ -21,7 +23,11 @@ function MoviePage(): ReactElement {
     return <>در حال بارگذاری...</>;
   }
 
-  return <div className={styles.Movie}>{movie.title}</div>;
+  return (
+    <div className={styles.movie}>
+      <MovieDetailsComponent movie={movie} />
+    </div>
+  );
 }
 
 export default MoviePage;
