@@ -6,6 +6,7 @@ import HomePage from "./pages/home/home.page.tsx";
 import MoviePage from "./pages/movie/movie.page.tsx";
 import NotFoundPage from "./pages/not-found/not-found.page.tsx";
 import SignUpPage from "./pages/auth/sign-up/sign-up-page.tsx";
+import Toaster from "./components/toaster/toaster.tsx";
 
 import QueryProvider from "./providers/query.provider.tsx";
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <Toaster />
     </QueryProvider>
   );
 }
