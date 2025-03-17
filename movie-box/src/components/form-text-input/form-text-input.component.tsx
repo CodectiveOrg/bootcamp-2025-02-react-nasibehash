@@ -5,6 +5,7 @@ import clsx from "clsx";
 import IconButtonComponent from "./components/icon-button/icon-button.component.tsx";
 
 import styles from "./form-text-input.module.css";
+import ErrorsComponent from './components/errors/errors.component.tsx';
 
 type Props = ComponentProps<"input"> & {
   label: string;
@@ -30,6 +31,7 @@ function FormTextInputComponent(
           )}
         </div>
       </label>
+      <ErrorsComponent className={styles.errors} errors={errors} />
     </div>
   );
 }
