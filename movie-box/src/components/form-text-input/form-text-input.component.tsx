@@ -1,11 +1,11 @@
-import { ComponentProps, ReactElement, forwardRef, ForwardedRef } from "react";
+import { ComponentProps, ReactElement } from "react";
 
 import clsx from "clsx";
 
 import IconButtonComponent from "./components/icon-button/icon-button.component.tsx";
+import ErrorsComponent from "./components/errors/errors.component.tsx";
 
 import styles from "./form-text-input.module.css";
-import ErrorsComponent from './components/errors/errors.component.tsx';
 
 type Props = ComponentProps<"input"> & {
   label: string;
@@ -14,16 +14,20 @@ type Props = ComponentProps<"input"> & {
   errors?: string[];
 };
 
-function FormTextInputComponent(
-  { label, suffixIcon, onSuffixClick, errors, className, ...otherProps }: Props,
-  ref: ForwardedRef<HTMLInputElement>,
-): ReactElement {
+export default function FormTextInputComponent({
+  label,
+  suffixIcon,
+  onSuffixClick,
+  errors,
+  className,
+  ...otherProps
+}: Props): ReactElement {
   return (
     <div className={clsx(styles["form-text-input"], className)}>
       <label className={clsx(errors && errors.length > 0 && styles.invalid)}>
         <div className={styles.title}>{label}</div>
         <div className={styles.box}>
-          <input ref={ref} type="text" placeholder="" {...otherProps} />
+          <input type="text" placeholder="" {...otherProps} />
           {suffixIcon && (
             <IconButtonComponent onClick={onSuffixClick}>
               {suffixIcon}
@@ -35,5 +39,3 @@ function FormTextInputComponent(
     </div>
   );
 }
-
-export default forwardRef(FormTextInputComponent);
