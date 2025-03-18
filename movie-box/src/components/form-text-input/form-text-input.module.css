@@ -1,10 +1,10 @@
 .form-text-input {
   display: grid;
-  grid-template-areas: "title errors" "box box";
+  grid-template-areas: "title server-errors" "box box";
   grid-template-columns: 1fr auto;
 
-  .errors {
-    grid-area: errors;
+  .server-errors {
+    grid-area: server-errors;
   }
 
   label {
