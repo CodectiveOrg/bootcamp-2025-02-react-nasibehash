@@ -27,7 +27,11 @@ export default function SignUpFormComponent(): ReactElement {
     mutationFn: fetchSignUpApi,
   });
 
-  const { control, handleSubmit } = useForm<SignInDto>({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors: clientErrors },
+  } = useForm<SignInDto>({
     defaultValues: {
       username: "",
       password: "",
@@ -54,9 +58,22 @@ export default function SignUpFormComponent(): ReactElement {
         <Controller
           control={control}
           name="username"
+          rules={{
+            required: { value: true, message: "Username is required." },
+            minLength: {
+              value: 3,
+              message: "Username must be longer than or equal to 3 characters",
+            },
+            maxLength: {
+              value: 16,
+              message:
+                "Username must be shorter than or equal to 16 characters",
+            },
+          }}
           render={({ field }) => (
             <FormTextInputComponent
               label="Username"
+              clientErrors={clientErrors?.username}
               serverErrors={serverErrors?.username}
               {...field}
             />
@@ -65,9 +82,22 @@ export default function SignUpFormComponent(): ReactElement {
         <Controller
           control={control}
           name="password"
+          rules={{
+            required: { value: true, message: "Password is required." },
+            minLength: {
+              value: 5,
+              message: "Password must be longer than or equal to 3 characters",
+            },
+            maxLength: {
+              value: 32,
+              message:
+                "Password must be shorter than or equal to 16 characters",
+            },
+          }}
           render={({ field }) => (
             <PasswordInputComponent
               label="Password"
+              clientErrors={clientErrors?.password}
               autoComplete="new-password"
               serverErrors={serverErrors?.password}
               {...field}

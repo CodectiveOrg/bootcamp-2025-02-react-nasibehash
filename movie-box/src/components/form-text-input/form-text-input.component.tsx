@@ -1,4 +1,5 @@
 import { ComponentProps, ReactElement } from "react";
+import { FieldError } from "react-hook-form";
 
 import clsx from "clsx";
 
@@ -12,6 +13,7 @@ type Props = ComponentProps<"input"> & {
   suffixIcon?: ReactElement;
   onSuffixClick?: () => void;
   serverErrors?: string[];
+  clientErrors?: FieldError;
 };
 
 export default function FormTextInputComponent({
@@ -19,16 +21,15 @@ export default function FormTextInputComponent({
   suffixIcon,
   onSuffixClick,
   serverErrors,
+  clientErrors,
   className,
   ...otherProps
 }: Props): ReactElement {
+  const isInvalid = clientErrors || (serverErrors && serverErrors.length > 0);
+
   return (
     <div className={clsx(styles["form-text-input"], className)}>
-      <label
-        className={clsx(
-          serverErrors && serverErrors.length > 0 && styles.invalid,
-        )}
-      >
+      <label className={clsx(isInvalid && styles.invalid)}>
         <div className={styles.title}>{label}</div>
         <div className={styles.box}>
           <input type="text" placeholder="" {...otherProps} />
@@ -39,6 +40,7 @@ export default function FormTextInputComponent({
           )}
         </div>
       </label>
+      <div className={styles["client-error"]}>{clientErrors?.message}</div>
       <ServerErrorsComponent
         className={styles["server-serverErrors"]}
         serverErrors={serverErrors}
