@@ -1,7 +1,9 @@
-import { FormEvent, ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
 import { fetchSignInApi } from "../../../../api/fetch-sign-in.api.ts";
 
@@ -17,27 +19,24 @@ import styles from "../../styles/auth-form.module.css";
 export default function SignInFormComponent(): ReactElement {
   const navigate = useNavigate();
 
-  const [validationErrors, setValidationErrors] =
+  const [serverErrors, setServerErrors] =
     useState<ValidationErrors<SignInDto>>();
 
   const mutation = useMutation({
     mutationFn: fetchSignInApi,
   });
 
-  const formSubmitHandler = (e: FormEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-
-    const formData = new FormData(e.currentTarget);
-
-    const dto: SignInDto = {
-      username: formData.get("username") as string,
-      password: formData.get("password") as string,
-    };
-
-    mutation.mutate(dto, {
+  const { control, handleSubmit } = useForm<SignInDto>({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+  });
+  const formSubmitHandler: SubmitHandler<SignInDto> = (data): void => {
+    mutation.mutate(data, {
       onSuccess: (result) => {
         if ("error" in result) {
-          setValidationErrors(result.validationErrors);
+          setServerErrors(result.validationErrors);
           toast.error(result.message);
         } else {
           toast.success(result.message);
@@ -50,18 +49,31 @@ export default function SignInFormComponent(): ReactElement {
   return (
     <div className={styles["auth-form"]}>
       <h1>Sign In!</h1>
-      <form onSubmit={formSubmitHandler}>
-        <FormTextInputComponent
-          label="Username"
+      <form onSubmit={handleSubmit(formSubmitHandler)}>
+        <Controller
+          control={control}
           name="username"
-          errors={validationErrors?.username}
+          render={({ field }) => (
+            <FormTextInputComponent
+              label="Username"
+              serverErrors={serverErrors?.username}
+              {...field}
+            />
+          )}
         />
-        <PasswordInputComponent
-          label="Password"
+        <Controller
+          control={control}
           name="password"
-          autoComplete="current-password"
-          errors={validationErrors?.password}
+          render={({ field }) => (
+            <PasswordInputComponent
+              label="Password"
+              autoComplete="current-password"
+              serverErrors={serverErrors?.password}
+              {...field}
+            />
+          )}
         />
+
         <ButtonComponent>Sign In</ButtonComponent>
       </form>
       <div className={styles["change-form"]}>

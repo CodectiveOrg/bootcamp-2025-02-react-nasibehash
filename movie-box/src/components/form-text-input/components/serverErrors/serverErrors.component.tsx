@@ -13,16 +13,16 @@ import MingcuteWarningLine from "../../../../icons/MingcuteWarningLine.tsx";
 
 import IconButtonComponent from "../icon-button/icon-button.component.tsx";
 
-import styles from "./errors.module.css";
+import styles from "./serverErrors.module.css";
 
 type Props = {
   className?: string;
-  errors?: string[];
+  serverErrors?: string[];
 };
 
-export default function ErrorsComponent({
+export default function ServerErrorsComponent({
   className,
-  errors,
+  serverErrors,
 }: Props): ReactElement {
   const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
 
@@ -43,21 +43,21 @@ export default function ErrorsComponent({
         <IconButtonComponent
           className={clsx(
             styles.toggle,
-            errors && errors.length > 0 && styles.visible,
+            serverErrors && serverErrors.length > 0 && styles.visible,
             className,
           )}
         >
           <MingcuteWarningLine />
         </IconButtonComponent>
       </div>
-      {errors && isPopoverOpen && (
+      {serverErrors && isPopoverOpen && (
         <div
           ref={refs.setFloating}
           style={floatingStyles}
           {...getFloatingProps()}
         >
           <ol className={styles.errors}>
-            {errors.map((error) => (
+            {serverErrors.map((error) => (
               <li key={error}>{error}</li>
             ))}
           </ol>
