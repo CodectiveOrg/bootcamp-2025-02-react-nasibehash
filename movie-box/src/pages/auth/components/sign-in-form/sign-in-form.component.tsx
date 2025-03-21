@@ -1,9 +1,12 @@
 import { ReactElement, useState } from "react";
+
 import { Link, useNavigate } from "react-router";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "react-toastify";
+
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+
+import { toast } from "react-toastify";
 
 import { fetchSignInApi } from "../../../../api/fetch-sign-in.api.ts";
 
@@ -22,8 +25,11 @@ export default function SignInFormComponent(): ReactElement {
   const [serverErrors, setServerErrors] =
     useState<ValidationErrors<SignInDto>>();
 
+  const queryClient = useQueryClient();
+
   const mutation = useMutation({
     mutationFn: fetchSignInApi,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["user"] }),
   });
 
   const { control, handleSubmit } = useForm<SignInDto>({
@@ -32,6 +38,7 @@ export default function SignInFormComponent(): ReactElement {
       password: "",
     },
   });
+
   const formSubmitHandler: SubmitHandler<SignInDto> = (data): void => {
     mutation.mutate(data, {
       onSuccess: (result) => {
@@ -73,7 +80,6 @@ export default function SignInFormComponent(): ReactElement {
             />
           )}
         />
-
         <ButtonComponent>Sign In</ButtonComponent>
       </form>
       <div className={styles["change-form"]}>

@@ -15,20 +15,6 @@
     > ul {
       display: flex;
       gap: 2rem;
-
-      > li {
-        a {
-          &:hover {
-            color: var(--color-primary-hover);
-          }
-
-          &.active {
-            color: var(--color-primary);
-
-            font-weight: 700;
-          }
-        }
-      }
     }
   }
 }
