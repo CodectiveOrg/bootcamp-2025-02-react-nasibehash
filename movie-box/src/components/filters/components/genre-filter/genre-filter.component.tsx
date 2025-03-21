@@ -1,14 +1,16 @@
-import { ReactElement, useContext } from "react";
+import { ReactElement } from "react";
 
-import { FiltersContext } from "../../../../context/filters.context.ts";
 import useGenresQuery from "../../../../queries/use-genres.query.ts";
+
+import { useFiltersStore } from "../../../../stores/filters.store.ts";
 
 import FilterCardComponent from "../filter-card/filter-card.component.tsx";
 
 import styles from "./genre-filter.module.css";
 
 function GenreFilterComponent(): ReactElement {
-  const { filters, toggleGenre } = useContext(FiltersContext);
+  const filters = useFiltersStore((state) => state.filters);
+  const toggleGenre = useFiltersStore((state) => state.toggleGenre);
 
   const { data: genres } = useGenresQuery();
 

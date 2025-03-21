@@ -1,18 +1,18 @@
-import { ReactElement, useContext } from "react";
+import { ReactElement } from "react";
 
 import { useQuery } from "@tanstack/react-query";
 
 import { fetchMoviesApi } from "../../api/fetch-movies.api.ts";
 
-import { FiltersContext } from "../../context/filters.context.ts";
-
 import LoadingComponent from "../loading/loading.component.tsx";
 import MovieListItemComponent from "../movie-list-item/movie-list-item.component.tsx";
+
+import { useFiltersStore } from "../../stores/filters.store.ts";
 
 import styles from "./movie-list.module.css";
 
 function MovieListComponent(): ReactElement {
-  const { filters } = useContext(FiltersContext);
+  const filters = useFiltersStore((state) => state.filters);
 
   const { data, isPending, isFetching, isError, error } = useQuery({
     queryKey: ["movies", filters],

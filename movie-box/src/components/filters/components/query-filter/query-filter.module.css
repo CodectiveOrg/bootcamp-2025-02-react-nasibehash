@@ -1,8 +1,0 @@
-.query-filter {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 1rem;
-  padding-inline: 1rem;
-  padding-block: 1rem;
-}
-
