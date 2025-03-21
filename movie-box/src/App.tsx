@@ -16,6 +16,10 @@ import UserOnlyGuard from "./guards/user-only.guard.tsx";
 import GuestOnlyGuard from "./guards/guest-only.guard.tsx";
 import DashboardLayout from "./layouts/dashboard/dashboard.layout.tsx";
 import ProfilePage from "./pages/dashboard/profile/profile.page.tsx";
+import SelectionPage from './pages/dashboard/selection/selection.page.tsx';
+import CreatePage from './pages/dashboard/selection/create/create.page.tsx';
+import DetailPage from './pages/dashboard/selection/detail/detail.page.tsx';
+import EditPage from './pages/dashboard/selection/edit/edit.page.tsx';
 
 function App() {
   return (
@@ -31,6 +35,16 @@ function App() {
           <Route element={<UserOnlyGuard />}>
             <Route element={<DashboardLayout />}>
               <Route path="dashboard" element={<ProfilePage />} />
+              <Route path="dashboard/selection" element={<SelectionPage />} />
+              <Route
+                path="dashboard/selection/create"
+                element={<CreatePage />}
+              />
+              <Route path="dashboard/selection/:id" element={<DetailPage />} />
+              <Route
+                path="dashboard/selection/:id/edit"
+                element={<EditPage />}
+              />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
