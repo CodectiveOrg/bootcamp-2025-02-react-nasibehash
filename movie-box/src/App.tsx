@@ -11,11 +11,11 @@ import Toaster from "./components/toaster/toaster.tsx";
 import QueryProvider from "./providers/query.provider.tsx";
 
 import "./App.css";
-import DashboardPage from "./pages/dashboard/dashboard.page.tsx";
 import SignInPage from "./pages/auth/sign-in/sign-in.page.tsx";
 import UserOnlyGuard from "./guards/user-only.guard.tsx";
 import GuestOnlyGuard from "./guards/guest-only.guard.tsx";
-import DashboardLayout from './layouts/dashboard/dashboard.layout.tsx';
+import DashboardLayout from "./layouts/dashboard/dashboard.layout.tsx";
+import ProfilePage from "./pages/dashboard/profile/profile.page.tsx";
 
 function App() {
   return (
@@ -31,16 +31,6 @@ function App() {
           <Route element={<UserOnlyGuard />}>
             <Route element={<DashboardLayout />}>
               <Route path="dashboard" element={<ProfilePage />} />
-              <Route path="dashboard/selection" element={<SelectionPage />} />
-              <Route
-                path="dashboard/selection/create"
-                element={<CreatePage />}
-              />
-              <Route path="dashboard/selection/:id" element={<DetailPage />} />
-              <Route
-                path="dashboard/selection/:id/edit"
-                element={<EditPage />}
-              />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
