@@ -4,6 +4,8 @@ import { Link } from "react-router";
 
 import clsx from "clsx";
 
+import ButtonComponent from "../button/button.component.tsx";
+
 import FluentEmojiStar from "../../icons/FluentEmojiStar.tsx";
 
 import useConfigurationQuery from "../../queries/use-configuration.query.ts";
@@ -15,9 +17,17 @@ import styles from "./movie-list-item.module.css";
 
 type Props = {
   movie: MovieListItemType;
+  actionIcon: ReactElement;
+  actionColor?: "primary" | "danger";
+  onActionClick: (movie: MovieListItemType) => void;
 };
 
-function MovieListItemComponent({ movie }: Props): ReactElement {
+function MovieListItemComponent({
+  movie,
+  actionIcon,
+  actionColor = "primary",
+  onActionClick,
+}: Props): ReactElement {
   const { data: configuration } = useConfigurationQuery();
   const { data: allGenres } = useGenresQuery();
 
@@ -51,6 +61,15 @@ function MovieListItemComponent({ movie }: Props): ReactElement {
         >
           {movie.title}
         </Link>
+        <ButtonComponent
+          color={actionColor}
+          variant="ghost"
+          size="small"
+          className={styles.action}
+          onClick={() => onActionClick(movie)}
+        >
+          {actionIcon}
+        </ButtonComponent>
         <div className={styles.ratings}>
           {movie.vote_average.toLocaleString("default", {
             minimumFractionDigits: 1,

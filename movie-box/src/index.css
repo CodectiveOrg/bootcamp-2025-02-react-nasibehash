@@ -2,7 +2,7 @@
   color-scheme: light;
 
   --color-primary: hsl(220, 50%, 50%);
-  --color-primary-fade: hsl(220, 50%, 95%);
+  --color-primary-fade: hsl(220, 20%, 95%);
   --color-primary-hover: hsl(220, 50%, 40%);
   --color-primary-outline: hsl(220, 50%, 40%);
 
@@ -16,6 +16,8 @@
   --color-text-50: hsl(0, 0%, 97%);
   --color-text-300: hsl(0, 0%, 40%);
   --color-text-400: hsl(0, 0%, 10%);
+
+  --color-backdrop: hsl(0, 0%, 0%, 20%);
 
   --color-border: hsl(0, 0%, 70%);
 
@@ -80,4 +82,13 @@ body {
 
 p {
   color: var(--color-text-300);
+}
+
+.card {
+  background-color: var(--color-surface-300);
+  box-shadow: var(--shadow);
+
+  padding: 1rem;
+
+  border-radius: var(--border-radius-400);
 }
